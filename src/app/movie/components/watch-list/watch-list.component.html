@@ -1,0 +1,42 @@
+<fieldset class="reset-this redo-fieldset ml-10">
+  <legend class="reset-this redo-legend">
+    <h5>My watchList</h5>
+  </legend>
+  <div class="row" *ngIf="watchList.length > 0">
+    <div class="col-md-12" *ngFor="let watch of watchList">
+      <div class="card mb-3 card-style">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{watch.Poster}}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{watch.Title}} <title></title>
+              </h5>
+
+              <p class="card-text"><small class="text-muted">{{watch.Year}} - {{watch.Type}}</small></p>
+              <div class="row">
+                <div class="col-md-6">
+                  <button type="button" class="btn btn-warning btn-lg br-20" (click)="openDetails(watch.imdbID)"><span
+                      class="span-icon"> <i class="fa fa-link fa-sm"></i><span>IMDb</span></span> </button>
+                </div>
+                <div class="col-md-6 ml-19">
+                  <button type="button" class="btn btn-danger btn-lg br-20" (click)="remove(watch.imdbID)"><span
+                      class="span-icon"><i class="fa fa-times fa-sm"></i><span>Remove</span></span></button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="row" *ngIf="watchList.length == 0">
+    <h1> There is no movie watched </h1>
+  </div>
+
+</fieldset>

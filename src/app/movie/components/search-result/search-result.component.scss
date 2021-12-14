@@ -1,0 +1,53 @@
+.reset-this {
+    all: initial;
+  }
+  
+  .redo-fieldset {
+    border: 2px solid black;
+    padding : 10px;
+  } 
+  
+  .redo-legend {
+    color: black;
+  } 
+  
+  
+  .btn-warning-style{
+     padding-right: 0%;
+      padding-left: 0%;
+  }
+  .btn-success-style{
+    padding-right: 0%; 
+    padding-left: 0%;
+  }
+  .btn-orange-style{
+    background-color: orange;
+    padding: 2%;
+    padding-left: 20%;
+    padding-right: 20%;
+  }
+  
+  
+
+  
+  
+  
+  @media only screen and (min-width: 768px) {
+    
+    .btn-orange-style{
+      background-color: orange;
+      padding: 6%;
+      padding-left: 15%;
+      padding-right: 16%;
+    }
+
+    .btn-warning-style{
+       padding-right: 20%;
+        padding-left: 20%;
+    }
+    .btn-success-style{
+      padding-right: 20%; 
+      padding-left: 25%;
+    }
+    
+  }

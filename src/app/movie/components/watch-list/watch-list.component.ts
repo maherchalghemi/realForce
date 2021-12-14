@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SearchModel } from '../shared/models/searchModel';
-import { OmdbService } from '../shared/services/omdb.service';
+import { SearchModel } from '../../../shared/models/searchModel';
+import { OmdbService } from '../../../shared/services/omdb.service';
 
 @Component({
   selector: 'app-watch-list',
@@ -9,8 +9,8 @@ import { OmdbService } from '../shared/services/omdb.service';
   styleUrls: ['./watch-list.component.scss']
 })
 export class WatchListComponent implements OnInit {
-watchList:SearchModel[]=[]
-  constructor(private omdbService: OmdbService,public route: Router) { }
+  watchList: SearchModel[] = []
+  constructor(private omdbService: OmdbService, public route: Router) { }
 
   ngOnInit(): void {
     this.getWatchList()
@@ -22,12 +22,13 @@ watchList:SearchModel[]=[]
     })
   }
 
-  openDetails(imdbID:string){
-    this.route.navigateByUrl('/details/'+imdbID)
+  openDetails(imdbID: string) {
+    this.route.navigateByUrl('/details/' + imdbID)
   }
 
-  remove(imdbID:string){
-    this.watchList = this.watchList.filter(w=> w.imdbID != imdbID)
+  remove(imdbID: string) {
+    this.watchList = this.watchList.filter(w => w.imdbID != imdbID)
+    localStorage.setItem("watch", JSON.stringify(this.watchList));
     this.omdbService.SetWatchsSubject(this.watchList)
   }
 

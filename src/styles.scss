@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+.ml-10{
+    margin-left: 10px;
+  }
+
+  .card-style{
+    max-width: 540px;
+    border: none !important;
+  }
+
+ 
+  .ml-19{
+    margin-left: 0%;
+}
+.br-20{
+    border-radius: 20px;
+}
+.span-icon{
+    font-size: 10px;
+    display: block;
+  }
+  .mt-1{
+    margin-top: 1%;
+  }
+  @media only screen and (min-width: 768px) {
+    .ml-19{
+        margin-left: -19% !important;
+    }
+    
+    
+  }

@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-md-8">
+        <fieldset class="reset-this redo-fieldset ml-10">
+            <legend class="reset-this redo-legend">
+                <h5>Search results</h5>
+            </legend>
+            <div class="row" *ngIf="movies.length > 0">
+                <div class="col-md-6" *ngFor="let movie of movies">
+                    <div class="card mb-3 card-style">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{movie.Poster}}" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{movie.Title}} <title></title>
+                                    </h5>
+
+                                    <p class="card-text"><small class="text-muted">{{movie.Year}} -
+                                            {{movie.Type}}</small></p>
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-warning btn-lg btn-warning-style br-20"
+                                                (click)="openDetails(movie.imdbID)"><span class="span-icon"> <i
+                                                        class="fa fa-link fa-sm"></i><span>IMDb</span></span> </button>
+                                        </div>
+                                        <div class="col-md-6 ml-19">
+                                            <button type="button" class="btn btn-success btn-lg btn-success-style br-20"
+                                                (click)="addMovie(movie)"
+                                                *ngIf="checkExistMovieInWatchList(movie.imdbID) == false">
+                                                <span class="span-icon">
+                                                    <i class="fa fa-plus fa-sm"></i>
+                                                    <span>Add</span>
+                                                </span>
+                                            </button>
+                                            <button type="button" class="btn btn-light btn-sm btn-orange-style br-20"
+                                                *ngIf="checkExistMovieInWatchList(movie.imdbID) == true">
+                                                Listed
+                                            </button>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row" *ngIf="movies.length == 0">
+                <h1> There is no movie </h1>
+            </div>
+
+        </fieldset>
+    </div>
+    <div class="col-md-4">
+        <app-watch-list></app-watch-list>
+    </div>
+</div>
