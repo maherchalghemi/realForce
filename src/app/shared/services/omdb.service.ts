@@ -10,7 +10,7 @@ import { SearchRequest } from '../models/searchRequest';
   providedIn: 'root'
 })
 export class OmdbService {
-//#region define variables
+  //#region define variables
   omdbEndpoint = environment.api.url;
   private _searchSubject: BehaviorSubject<SearchRequest>;
   public search: Observable<SearchRequest>;
@@ -18,6 +18,7 @@ export class OmdbService {
   public watchs: Observable<SearchModel[]>;
   //#endregion
   constructor(private http: HttpClient) {
+    // initialize
     this._searchSubject = new BehaviorSubject<SearchRequest>(new SearchRequest());
     this.search = this._searchSubject.asObservable();
 
