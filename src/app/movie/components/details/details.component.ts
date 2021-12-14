@@ -17,6 +17,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.movieSelected = new SearchModel()
   }
   ngOnDestroy(): void {
+    // interrupt the processing carried out by the Observable subscription
     if (this.subscription != null || this.subscription != undefined)
       this.subscription.unsubscribe()
   }
@@ -27,6 +28,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.getById()
   }
 
+  // get movie from server by imdbID
   getById() {
     this.subscription = this.omdbService.GetByID(this.imdbID).subscribe(res => {
 

@@ -16,16 +16,18 @@ export class WatchListComponent implements OnInit {
     this.getWatchList()
   }
 
+  // get watch stored in Behavor subject
   getWatchList() {
     this.omdbService.watchs.subscribe(res => {
       this.watchList = res
     })
   }
-
+  // navigate to details page
   openDetails(imdbID: string) {
     this.route.navigateByUrl('/details/' + imdbID)
   }
 
+  // remove movie from watch list and update local storage and bahavor subject
   remove(imdbID: string) {
     this.watchList = this.watchList.filter(w => w.imdbID != imdbID)
     localStorage.setItem("watch", JSON.stringify(this.watchList));

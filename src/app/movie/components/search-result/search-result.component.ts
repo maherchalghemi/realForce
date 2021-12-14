@@ -22,6 +22,7 @@ export class SearchResultComponent implements OnInit, OnDestroy {
     this.getWatchList()
   }
   ngOnDestroy(): void {
+    // interrupt the processing carried out by the Observable subscription
     if (this.subscription != null || this.subscription != undefined)
       this.subscription.unsubscribe()
   }
@@ -46,13 +47,14 @@ export class SearchResultComponent implements OnInit, OnDestroy {
     this.omdbService.SetWatchsSubject(this.watchList)
   }
 
-  // watch
+  // get watch stored in Behavor subject
   getWatchList() {
     this.omdbService.watchs.subscribe(res => {
       this.watchList = res
     })
   }
 
+  // check if exist movie in WatchList by imdbID
   checkExistMovieInWatchList(imdbID: string): boolean {
     if (this.watchList.filter(w => w.imdbID == imdbID).length > 0)
       return true;
