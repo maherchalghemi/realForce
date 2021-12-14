@@ -1,0 +1,73 @@
+<!-- <fieldset>
+
+    <legend>
+       Search results
+    </legend>
+
+
+</fieldset> -->
+
+<!-- <fieldset >
+    <legend >Start Time</legend>
+    <div class="control-group">
+        <label class="control-label input-label" for="startTime">Start :</label>
+        <div class="controls bootstrap-timepicker">
+            <input type="text" class="datetime" id="startTime" name="startTime" placeholder="Start Time" />
+            <i class="icon-time"></i>
+        </div>
+    </div>
+</fieldset> -->
+
+    
+
+    <div class="row">
+        <div class="col-md-8">
+            <fieldset class="reset-this redo-fieldset" style="margin-left: 10px;">
+                <legend class="reset-this redo-legend"><h5>Search results</h5></legend>
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let movie of movies">
+                        <div class="card mb-3" style="max-width: 540px; border: none !important;">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <img src="{{movie.Poster}}" class="img-fluid rounded-start" alt="...">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title">{{movie.Title}} <title></title></h5>
+                                  
+                                  <p class="card-text"><small class="text-muted">{{movie.Year}} - {{movie.Type}}</small></p>
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-warning btn-lg"  style="border-radius: 20px;" (click)="openDetails(movie.imdbID)"><span style="font-size: 10px;display: block;"> <i class="fa fa-link fa-sm" ></i><span >IMDb</span></span> </button>
+                                      </div>
+                                      <div class="col-md-6" style="margin-left: -19%;">
+                                        <button type="button" class="btn btn-success btn-lg" style="border-radius: 20px;" (click)="addMovie(movie)" *ngIf="checkExistMovieInWatchList(movie.imdbID) == false">
+                                            <span style="font-size: 10px;display: block;">
+                                                <i class="fa fa-plus fa-sm" ></i>
+                                                <span >Add</span>
+                                            </span>
+                                        </button>
+                                        <button type="button" class="btn btn-light btn-sm" style="border-radius: 20px; background-color: orange; padding: 6%;
+                                        padding-left: 15%;
+                                        padding-right: 16%;" *ngIf="checkExistMovieInWatchList(movie.imdbID) == true" >
+                                            Listed
+                                        </button>
+                                      </div>
+                                      
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+        
+                   
+                </div>
+               
+            </fieldset>
+        </div>
+        <div class="col-md-4">
+    <app-watch-list></app-watch-list>
+        </div>
+      </div>
+

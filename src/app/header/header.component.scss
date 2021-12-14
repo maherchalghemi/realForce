@@ -1,0 +1,23 @@
+input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    font-size: 16px;
+    border-radius: 20px;
+    background-image: url("../../assets/search.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  
+    padding: 7px 5px 7px 37px;
+    background-position-y: center;
+  
+    background-color: #f0f2f5;
+  }
+  
+  
+
+  .color-white{
+    color: white;
+  }

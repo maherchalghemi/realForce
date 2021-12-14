@@ -1,0 +1,34 @@
+
+    <fieldset class="reset-this redo-fieldset" style="margin-left: 10px;">
+        <legend class="reset-this redo-legend"><h5>My watchList</h5></legend>
+        <div class="row">
+            <div class="col-md-12" *ngFor="let watch of watchList">
+                <div class="card mb-3" style="max-width: 540px; border: none !important;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="{{watch.Poster}}" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{watch.Title}} <title></title></h5>
+                          
+                          <p class="card-text"><small class="text-muted">{{watch.Year}} - {{watch.Type}}</small></p>
+                          <div class="row">
+                            <div class="col-md-6" >
+                                <button type="button" class="btn btn-warning btn-lg"  style="border-radius: 20px;" (click)="openDetails(watch.imdbID)"><span style="font-size: 10px;display: block;"> <i class="fa fa-link fa-sm" ></i><span >IMDb</span></span> </button>
+                              </div>
+                              <div class="col-md-6" style="margin-left: -19%;">
+                                <button type="button" class="btn btn-danger btn-lg" style="border-radius: 20px;" (click)="remove(watch.imdbID)"><span style="font-size: 10px;display: block;" ><i class="fa fa-times fa-sm" ></i><span >Remove</span></span></button>
+                              </div>
+                              
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+
+           
+        </div>
+       
+    </fieldset>
