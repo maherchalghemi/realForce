@@ -9,7 +9,9 @@ import { OmdbService } from '../../../shared/services/omdb.service';
   styleUrls: ['./watch-list.component.scss']
 })
 export class WatchListComponent implements OnInit {
+  //#region define variables
   watchList: SearchModel[] = []
+  //#endregion
   constructor(private omdbService: OmdbService, public route: Router) { }
 
   ngOnInit(): void {

@@ -10,10 +10,12 @@ import { OmdbService } from '../../../shared/services/omdb.service';
   styleUrls: ['./search-result.component.scss']
 })
 export class SearchResultComponent implements OnInit, OnDestroy {
+  //#region define variables
   movies: SearchModel[] = []
   watchList: SearchModel[] = []
   isListed: boolean = false
   subscription !: Subscription
+  //#endregion
   constructor(private omdbService: OmdbService, public route: Router) { }
 
   ngOnInit(): void {

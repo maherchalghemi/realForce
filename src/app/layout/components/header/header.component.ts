@@ -8,6 +8,7 @@ import { OmdbService } from '../../../shared/services/omdb.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  //#region define variables
   types = [
     { value: "movie", text: "Movie" },
     { value: "serie", text: "Serie" }
@@ -25,6 +26,7 @@ export class HeaderComponent implements OnInit {
 
   txtYear = "Year"
   txtType = "Type"
+  //#endregion
   constructor(private omdbService: OmdbService) { }
 
   ngOnInit(): void {

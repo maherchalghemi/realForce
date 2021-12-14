@@ -10,9 +10,11 @@ import { OmdbService } from '../../../shared/services/omdb.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit, OnDestroy {
+  //#region define variables
   imdbID: string | null = "";
   movieSelected: SearchModel
   subscription !: Subscription
+  //#endregion
   constructor(private omdbService: OmdbService, private _Activatedroute: ActivatedRoute) {
     this.movieSelected = new SearchModel()
   }

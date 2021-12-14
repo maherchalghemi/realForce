@@ -10,12 +10,13 @@ import { SearchRequest } from '../models/searchRequest';
   providedIn: 'root'
 })
 export class OmdbService {
-
+//#region define variables
   omdbEndpoint = environment.api.url;
   private _searchSubject: BehaviorSubject<SearchRequest>;
   public search: Observable<SearchRequest>;
   private _watchsSubject: BehaviorSubject<SearchModel[]>;
   public watchs: Observable<SearchModel[]>;
+  //#endregion
   constructor(private http: HttpClient) {
     this._searchSubject = new BehaviorSubject<SearchRequest>(new SearchRequest());
     this.search = this._searchSubject.asObservable();
