@@ -11,48 +11,53 @@ import { OmdbService } from '../../../shared/services/omdb.service';
 })
 export class SearchResultComponent implements OnInit, OnDestroy {
   //#region define variables
-  movies: SearchModel[] = []
-  watchList: SearchModel[] = []
-  isListed: boolean = false
-  subscription !: Subscription
+  movies: SearchModel[] = [];
+  watchList: SearchModel[] = [];
+  isListed: boolean = false;
+  subscription !: Subscription;
+  isLoading: boolean = false;
   //#endregion
   constructor(private omdbService: OmdbService, public route: Router) { }
 
   ngOnInit(): void {
-    this.searchMovies()
+    this.searchMovies();
 
-    this.getWatchList()
+    this.getWatchList();
   }
   ngOnDestroy(): void {
     // interrupt the processing carried out by the Observable subscription
     if (this.subscription != null || this.subscription != undefined)
-      this.subscription.unsubscribe()
+      this.subscription.unsubscribe();
   }
   // search movie by all filter (year/type/title) from subject
   searchMovies() {
+    
+    
     this.omdbService.search.subscribe(search => {
+      this.isLoading = true;
       this.subscription = this.omdbService.SearchMovies(search).subscribe(res => {
-        this.movies = res.Search
+        this.movies = res.Search;
+        this.isLoading = false;
       })
     })
   }
 
   // open detail page
   openDetails(imdbID: string) {
-    this.route.navigateByUrl('/details/' + imdbID)
+    this.route.navigateByUrl('/details/' + imdbID);
   }
 
   // add movie in my watch list
   addMovie(movie: SearchModel) {
-    this.watchList.unshift(movie)
+    this.watchList.unshift(movie);
     localStorage.setItem("watch", JSON.stringify(this.watchList));
-    this.omdbService.SetWatchsSubject(this.watchList)
+    this.omdbService.SetWatchsSubject(this.watchList);
   }
 
   // get watch stored in Behavor subject
   getWatchList() {
     this.omdbService.watchs.subscribe(res => {
-      this.watchList = res
+      this.watchList = res;
     })
   }
 
