@@ -7,7 +7,7 @@
             <legend class="reset-this redo-legend">
                 <h5>Search results</h5>
             </legend>
-            <div class="row" *ngIf="movies != undefined">
+            <div class="row" *ngIf="movies.length != 0">
                 <div class="col-md-6" *ngFor="let movie of movies">
                     <div class="card mb-3 card-style">
                         <div class="row g-0">
@@ -54,10 +54,8 @@
 
 
             </div>
-            <!-- <div class="row" >
-                <h1> There is no movie </h1>
-            </div> -->
-            <div class="alert alert-danger" role="alert" *ngIf="movies == undefined">
+           
+            <div class="alert alert-danger" role="alert" *ngIf="movies.length == 0">
                 There is no movie
             </div>
         </fieldset>
