@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SearchRequest } from '../../../shared/models/searchRequest';
 import { OmdbService } from '../../../shared/services/omdb.service';
 
@@ -22,21 +23,28 @@ export class HeaderComponent implements OnInit {
   ]
   yearSelected: string = "";
   typeSelected: string = "";
-  title: string = ""
 
   txtYear = "Year"
   txtType = "Type"
+  form:FormGroup
   //#endregion
-  constructor(private omdbService: OmdbService) { }
+  constructor(private omdbService: OmdbService, private fb: FormBuilder) { 
+    this.form = fb.group({
+      title:["", Validators.required]
+    })
+  }
 
   ngOnInit(): void {
+    this.form.get("title")?.valueChanges.subscribe(t => {
+      this.setSearchRequest()
+      })
   }
 
   // set year selected and  display text 
   setYear(year: string) {
     this.yearSelected = year;
     this.txtYear = year
-    if (this.title != '')
+    if (this.form.valid)
       this.setSearchRequest()
   }
 
@@ -44,14 +52,14 @@ export class HeaderComponent implements OnInit {
   setType(value: string, text:string) {
     this.typeSelected = value;
     this.txtType = text
-    if (this.title != '')
+    if (this.form.valid)
       this.setSearchRequest()
 
   }
   setSearchRequest() {
     if (this.yearSelected != "" && this.typeSelected != "") {
       var searchRequest = new SearchRequest()
-      searchRequest.Title = this.title
+      searchRequest.Title = this.form.get("title")?.value
       searchRequest.Type = this.typeSelected
       searchRequest.Year = this.yearSelected
 

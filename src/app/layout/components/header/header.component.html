@@ -32,10 +32,10 @@
           </ul>
         </li>
       </ul>
-      <form class="pl-2">
+      <form [formGroup]="form" class="pl-2">
         <div class="form-group">
 
-          <input type="text" name="search" placeholder="Title" [(ngModel)]="title" (keyup)="setSearchRequest()">
+          <input type="text" name="search" placeholder="Title" formControlName="title" >
         </div>
 
       </form>
