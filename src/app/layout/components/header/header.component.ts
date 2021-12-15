@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
   //#region define variables
   types = [
     { value: "movie", text: "Movie" },
-    { value: "serie", text: "Serie" }
+    { value: "series", text: "Serie" }
   ]
 
   years = [
@@ -36,12 +36,17 @@ export class HeaderComponent implements OnInit {
   setYear(year: string) {
     this.yearSelected = year;
     this.txtYear = year
+    if (this.title != '')
+      this.setSearchRequest()
   }
 
   // set type selected and  display text 
-  setType(type: string) {
-    this.typeSelected = type;
-    this.txtType = type
+  setType(value: string, text:string) {
+    this.typeSelected = value;
+    this.txtType = text
+    if (this.title != '')
+      this.setSearchRequest()
+
   }
   setSearchRequest() {
     if (this.yearSelected != "" && this.typeSelected != "") {
