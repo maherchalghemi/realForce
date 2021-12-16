@@ -35,3 +35,9 @@ input[type="text"] {
   .pl-10{
     padding-left: 10%;
   }
+
+  .pos-sticky{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
